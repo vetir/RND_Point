@@ -47,7 +47,6 @@ public class SolutionTask_4 {
                 map.put(arrString[i], 1);
             }
         }
-
         int maxValueInMap=(Collections.max(map.values()));
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
             if (entry.getValue() == maxValueInMap) {
