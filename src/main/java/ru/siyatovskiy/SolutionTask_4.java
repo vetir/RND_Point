@@ -6,8 +6,8 @@ import java.util.Map;
 
 /**
  * 4.	Напишите приложение на Java\Groovy, которое решает следующую задачу:
- *      Имеется массив строк.
- *      Необходимо определить строку, которая встречается чаще всего и вывести количество слов в данной строке.
+ * Имеется массив строк.
+ * Необходимо определить строку, которая встречается чаще всего и вывести количество слов в данной строке.
  */
 
 public class SolutionTask_4 {
@@ -39,15 +39,12 @@ public class SolutionTask_4 {
      */
     public void stringArrayParsing(String[] arrString) {
 
-        HashMap<String, Integer> map = new HashMap<>();
+        Map<String, Integer> map = new HashMap<>();
         for (int i = 0; i < arrString.length; i++) {
-            if (map.containsKey(arrString[i])) {
-                map.put(arrString[i], map.get(arrString[i]) + 1);
-            } else {
-                map.put(arrString[i], 1);
-            }
+            map.merge(arrString[i], 1, (v1, v2) -> v1 +v2);
         }
-        int maxValueInMap=(Collections.max(map.values()));
+
+        int maxValueInMap = (Collections.max(map.values()));
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
             if (entry.getValue() == maxValueInMap) {
                 System.out.println("Самая часто повторяющаяся строка - " + entry.getKey());
